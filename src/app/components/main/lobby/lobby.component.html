@@ -1,0 +1,66 @@
+
+<div cdkDropListGroup
+[className]="(roomData.owner==user.id) ? 'activer row' : 'inactiver row'">
+
+<div class="col-12 col-sm-12 col-md-4">
+    <app-lobby-friends></app-lobby-friends>            
+    
+
+    <!-- ESPECTADORES, EQUIPOS -->
+    <div class="container dd-mgt-2">
+        <ul class="list-group">
+
+          <li href="#" class="list-group-item">
+              <div class="example-container">
+                  <h2 class="dd-font-lobby">En espera</h2>
+                  <div class="scroll-show">
+                      <div
+                        cdkDropList
+                           id="0"
+                        [cdkDropListDisabled]="!isOwner"
+                        [cdkDropListData]="teams[0]"
+                        class="example-list"
+                        (cdkDropListDropped)="drop($event)">
+                      <div class="example-box" *ngFor="let spectator of teams[0]" cdkDrag>{{spectator.name}} <ng-container  *ngIf="spectator.id==roomData.owner" ><i class="bi bi-controller"></i></ng-container> </div>
+                      </div>
+                  </div>
+              </div>      
+          </li>
+          
+        </ul>
+    </div>
+
+
+  </div>
+
+
+
+  <div class="col-12 col-sm-12 col-md-8">
+    <div class="container dd-mgt-1 dd-mgb-2" >
+
+                <ul class="list-group">
+
+                    <li href="#" class="list-group-item notSelectDefault">
+                          <button class="btn btn-success float-start" (click)="startGame()">Comenzar partida</button>
+                          <button class="btn btn-danger float-end" (click)="leaveRoom()">Abandonar partida</button>
+                    </li>
+                    <li href="#" class="list-group-item">
+                      <div class="example-container" *ngFor="let team of teams.slice(1); let i = index">
+                        <h2 class="dd-font-lobby notSelectDefault">Equipo {{i+1}}</h2>
+                        <div
+                          cdkDropList
+                          id="{{i+1}}"
+                          [cdkDropListDisabled]="!isOwner"
+                          [cdkDropListData]="team"
+                          class="example-list"
+                          (cdkDropListDropped)="drop($event)">
+                          <div class="example-box" *ngFor="let member of team" cdkDrag>{{member.name}} <ng-container  *ngIf="member.id==roomData.owner" ><i class="bi bi-controller"></i></ng-container> </div>
+                        </div>
+                      </div>
+                    </li>
+
+                  </ul>
+    </div>
+  </div>
+
+</div> <!-- FIN cdkDropListGroup -->

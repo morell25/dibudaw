@@ -1,0 +1,94 @@
+<div class="card" style="margin: 7% 2% 0 5%; border: 2px solid black">
+  <div class="card-body">
+
+      <div class="d-flex justify-content-center">
+          <a [routerLink] = "['/login']" class="dibudawLink"><h1 class="dibudawFont">dibudaw.io&nbsp;<i class="bi bi-pencil pencil"></i></h1></a>
+      </div>
+
+      <div class="row" >
+          <div class="d-flex justify-content-center">
+          <div id="clock" class=" col-6" #clock>
+              <div class="d-flex justify-content-center">
+              <div class="base-timer">
+                  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <g class="base-timer__circle">
+                      <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+                      <path #baseTimerPathRemaining
+                      id="base-timer-path-remaining"
+                      stroke-dasharray="283"
+                      class="base-timer__path-remaining"
+                      d="
+                      M 50, 50
+                      m -45, 0
+                      a 45,45 0 1,0 90,0
+                      a 45,45 0 1,0 -90,0
+                      "
+                      ></path>
+                  </g>
+                  <text
+                      xml:space="preserve"
+                      #baseTimerLabel
+                      style="font-style:normal;font-weight:normal;font-size:32px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.956112"
+                      x="-69"
+                      y="60"
+                      id="text841"
+                      transform="scale(-1,1)"
+                      ></text>
+                  </svg>
+                  <!-- <span #baseTimerLabel id="base-timer-label" class="base-timer__label">{{formatTime(timeLeft)}}</span> -->
+              </div>
+              </div>
+          </div>
+          </div>
+      </div>
+  
+      <div style="margin-top: 5%;"  >
+          <div class="jumbotron list-content">
+          <ul class="list-group">
+      
+            
+            <li href="#" class="list-group-item-score title">
+              <div class="row">
+                <div class="col-9">Jugadores</div>
+                <div class="col-3">Pts</div>
+              </div>
+            </li>
+            
+            
+                   <!-- (SCROLL DE LA LISTA DE AMIGOS) -->
+            
+            <div class="position">
+
+
+              <li class="list-group-item" *ngFor="let team of backService.scoreboard; let i = index">
+                <div class="row" style="{{(backService.game.dynamicData.currentlyDrawingTeam == team.number) ? 'background-color: lightblue;': ''}}">
+                  <div class="col-9"><ng-container *ngFor="let member of team.members"><span style="{{member.id == backService.game.dynamicData.currentlyDrawingUser ? 'background-color: pink;': ''}}">{{member.name}}</span><br></ng-container></div>
+                  <div class="col-3">
+                    <ng-container *ngIf="i == 0"><img src="/assets/images/uno.png" width="100%"><br><span style="font-size:1.8vh;">{{team.score}}</span></ng-container>
+                    <ng-container *ngIf="i == 1"><img src="/assets/images/dos.png" width="100%"><br><span style="font-size:1.8vh;">{{team.score}}</span></ng-container>
+                    <ng-container *ngIf="i == 2"><img src="/assets/images/tres.png" width="100%"><br><span style="font-size:1.8vh;">{{team.score}}</span></ng-container>
+                    <ng-container *ngIf="i >= 3"><div class="col-3 d-flex justify-content-center" style="align-items:center;">{{team.score}}</div></ng-container>
+                  </div>
+                </div>
+              </li>
+
+
+            </div>
+            
+      
+          </ul>
+        </div>
+        </div>
+
+  </div>
+
+
+  
+  <div class="card-footer d-grid gap-1" *ngIf="user && roomData && user.id == roomData.owner">
+      <button class="btn btn-danger" type="submit" (click)="endGame()">Terminar partida</button>
+  </div>
+
+  <div *ngIf="!user || !roomData || user.id != roomData.owner" class="card-footer d-grid gap-1 cursorNotAllowed">
+    <button class="btn btn-danger" type="submit" (click)="endGame()" disabled>Terminar partida</button>
+  </div>
+</div>

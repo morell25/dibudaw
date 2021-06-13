@@ -1,0 +1,66 @@
+<!--(IN)-->
+<div class="row">
+
+    <!-- AJUSTES Y DESPLEGABLE -->
+    <div class="col-2">
+        <div class="dropdown">
+            <a class="btn btn-dark dropdown-toggle float-start settings" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-gear-fill"></i>
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><p class="text-center text-decoration-underline">Usuario:</p></li>
+                <li><a class="dropdown-item" [routerLink]="['/main/config/email']">Cambiar E-mail</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/main/config/password']">Cambiar Contraseña</a></li>
+                <li><a class="dropdown-item notSelect" (click)="logout()">Cerrar sesión</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- DIBUDAW ENLACE-->
+    <div class="col-8 d-flex justify-content-center">
+        <a [routerLink]="['/home']" class="text-decoration-none"><h1 class="dibudaw dd-mgt-4">dibudaw.io&nbsp;<i class="bi bi-pencil white" style="font-size: 20px;"></i></h1></a>
+    </div>
+
+    <!-- CAMPANA Y DESPLEGABLE -->
+    <div class="col-2">
+        <div class="dropdown">
+            <a class="btn btn-warning dropdown-toggle float-end notifications" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-bell-fill badgial" style="font-size:1rem" id="0">&#x7;</i>
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <ng-container *ngFor="let friendRequestItem of friendRequests">
+                    <li class="dropdown-item notSelectDefault dd-blue-msg">{{friendRequestItem.name}} te ha enviado una solicitud de amistad:</li>
+                    <div class="row">
+                        <div class="col-6" class="text-center">
+                            <button class="btn btn-outline-success btn-sm dd-mgb-4" (click)='acceptFriendRequest(friendRequestItem.id)'>Aceptar</button>
+                        </div>
+                        <div class="col-6" class="text-center">
+                            <button class="btn btn-outline-danger btn-sm dd-mgb-4" (click)='declineFriendRequest(friendRequestItem.id)'>Rechazar</button>
+                        </div>
+                    </div>
+                     
+                </ng-container>
+                <ng-container *ngFor="let invitation of invitationList">
+                    <li class="dropdown-item notSelectDefault dd-blue-msg">{{invitation.name}} te ha invitado a su partida:</li>
+                    <div class="row">
+                        <div class="col-6" class="text-center">
+                            <button class="btn btn-outline-success btn-sm dd-mgb-4" (click)='joinRoom(invitation.id)'>Aceptar</button>
+                        </div>
+                        <div class="col-6" class="text-center">
+                            <button class="btn btn-outline-danger btn-sm dd-mgb-4" (click)='rechazaInvitation(invitation.id)'>Rechazar</button>
+                        </div>
+                    </div>
+                     
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+<!--(OUT)-->
+<!-- COMPONENTE LISTADO DE AMIGOS Y SALA DE ESPERA -->
+<router-outlet ></router-outlet>

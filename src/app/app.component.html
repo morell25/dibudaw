@@ -1,0 +1,14 @@
+<div class="container-fluid" (contextmenu)="onRightClick($event)">
+  <div class="background">
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+  </div>
+
+  <div class="contenido">
+    <router-outlet *ngIf="ready"></router-outlet>
+  </div>
+</div>
+<ngx-spinner><p style="color: white"> La partida comenzará en: {{timeLeft}}</p></ngx-spinner>
