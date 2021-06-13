@@ -1,0 +1,63 @@
+<div class="row">
+
+  <div class="col-12 col-sm-12 col-md-4 dd-mgb-2">
+    <app-home-friends></app-home-friends>
+  </div>
+
+  <div class="col-12 col-sm-12 col-md-8">
+    <div class="row dd-mgt-1">
+      <div class="col-12 col-sm-12 col-md-4 dd-mgb-1">
+        <div class="container">
+          <div class="card">
+          <div class="d-grid">
+            <button class="btn btn-success" (click)="createRoom()">
+              Crear sala
+            </button>
+          </div>
+        </div>
+        </div>
+      </div>
+
+
+      <div class="col-12 col-sm-12 col-md-8">
+        <div class="container">
+          <div class="d-grid">
+            <form class="d-flex">
+              <input #roomName class="form-control me-2" type="search" placeholder="Código de la partida" aria-label="Search" (key.enter)="joinRoom(roomName.value)">
+              <button class="btn btn-success" type="submit" (click)="joinRoom(roomName.value)">Unirse</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12">
+        <div class="container dd-mgt-1">
+          <div class="card">
+            <h2 class="card-header">** NOTAS DEL PARCHE v.0.2.5-Alpha **</h2>
+            <div class="card-body">
+              <h5>Ya es oficial la fecha de lanzamiento!!</h5>
+              <p>Tras una reunión realizada el 07/04/2021 en las oficinas de Discord en España, los encargados en el desarrollo y mantenimiento de dibudaw.io, pusieron fecha fin a la exposición de la misma.</p>
+             <ul>
+               <li>España - 10:00 AM </li>
+               <li>Argentina, Brasil, Chile, Uruguay - 05:00 AM</li>
+               <li>Colombia - 03:00 AM</li>
+               <li>México - 02:00 AM</li>
+             </ul>
+             <h5>Solución de Bugs!</h5>
+              <p>Se han resuelto 3 bugs que afectaban al funcionamiento de la página, detectados gracias a vuestra comunicación con el soporte técnico dibudaw@gmail.com</p>
+             <ul>
+               <li>Botón de comenzar partida, no resaltaba color al pasar el mouse. </li>
+               <li>Botón "Tú perfil", no mostraba tu nick.</li>
+               <li>Navegación por movil en el home, no funcionaba el responsive.</li>
+             </ul>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+

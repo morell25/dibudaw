@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="background">
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+  </div>
+
+  <div class="contenido">
+    <router-outlet *ngIf="ready"></router-outlet>
+  </div>
+</div>
+<ngx-spinner><p style="color: white; margin-top:4px;" class="notSelectDefault"> La ronda comenzará en: {{timeLeft}}</p></ngx-spinner>

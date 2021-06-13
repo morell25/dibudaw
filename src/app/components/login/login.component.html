@@ -1,0 +1,64 @@
+
+<div class="container dd-pt-10">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 offset-md-3">
+
+            <div class="d-flex justify-content-center">
+                <a [routerLink] = "['/login']" class="text-decoration-none"><h1 class="dd-font-white-logo">dibudaw&nbsp;<i class="bi bi-pencil pencil" style="font-size: 20px;"></i></h1></a>
+            </div>
+            
+            <!-- ( BOTONES A SECCIONES [LOGIN & REGISTER] )-->
+
+            <div class="form-body rounded">
+                <ul class="nav nav-tabs final-login" role="tablist" id="myTab">
+                    <li class="active nav-item d-flex justify-content-center" role="presentation">
+                        <button class="nav-link active" role="tab" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" aria-controls="login">Inicio de sesión</button>
+                    </li>
+                    <li class="nav-item d-flex justify-content-center" role="presentation">
+                        <button class="nav-link" role="tab" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" aria-controls="register">Registro</button>
+                    </li>
+                </ul>
+
+                <!--( SECCIONES )-->
+                <div class="tab-content" id="myTabContent">
+
+                    <!-- SECCION login ................................................. -->
+                    <!--1--><div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                    <!--2--><div class="innter-form">
+                                <form class="sa-innate-form" [formGroup]="loginForm">
+                                    <label for="loginEmail" >Correo electrónico <span style="color: red;">*</span></label>
+                                    <input type="email" id="loginEmail" formControlName="loginEmail">
+                                    <label for="loginPass">Contraseña <span style="color: red;">*</span></label>
+                                    <input type="password" id="loginPass" formControlName="loginPass">
+                                    <button type="submit" (click)="logIn()">Iniciar sesión</button>
+                                </form>
+                            </div>
+                            </div>
+
+
+                    <!-- SECCION registro ................................................. -->
+                    <!--1--><div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                    <!--2--><div class="innter-form">
+                                <form class="sa-innate-form" [formGroup]="registerForm">
+                                    <label for="idUser">Usuario <span style="color: red;">*</span></label>
+                                    <input #registerUsername type="text" id="idUser" class="form-control" formControlName="registerUsername" required>
+                                    <label for="idEmail" class="form-label">Correo electrónico <span style="color: red;">*</span></label>
+                                    <input #registerEmail type="email" id="idEmail" class="form-control" formControlName="registerEmail" required>
+                                    <label for="idPassword">Contraseña <span style="color: red;">*</span></label>
+                                    <input #registerPassOne type="password" id="idPassword" class="form-control" formControlName="registerPass1" required>
+                                    <label for="idPassword2">Confirmar contraseña <span style="color: red;">*</span></label>
+                                    <input #registerPassTwo type="password" id="idPassword2" class="form-control" formControlName="registerPass2" required>
+                                    <button type="submit" (click)="signUp()">Registrarse</button>
+                                    <p>Al hacer click en Registrarse, aceptas los terminos de usuario, la politica de privacidad y la politica de las Cookies de la página dibudaw.io.</p>
+                                </form>
+                            </div>
+                            </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+        

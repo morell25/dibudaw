@@ -1,0 +1,128 @@
+
+<div class="container dd-mgt-2">
+
+  <!-- (BLOQUE, TU PERFIL)-->
+  <!-- ............................................................................... -->
+  <div class="jumbotron list-content">
+    <ul class="list-group">
+      <li class="list-group-item" style="border-top: 1px solid black;">
+        <h5 class="d-flex justify-content-center">TU PERFIL</h5>
+      </li>
+      <li class="list-group-item" style="padding: 0 1rem;">
+        <label class="dd-nick-list-friends" style="margin-top: 0.9rem; margin-bottom:0">{{user.name}}</label>
+        <label class="float-end">
+          <button class="btn btn-warning dropdown-toggle" style="margin-top: 0.9rem;" role="button" data-bs-toggle="dropdown">
+            Cambio de nombre
+          </button>
+          <ul class="dropdown-menu ul-change" aria-labelledby="dropdownMenuLink">
+            <li>
+              <label for="nameUser" class="d-flex justify-content-center">Nombre Actual</label><br>
+              <input #newName type="text" name="nameUser" value="{{user.name}}">
+            </li>
+            <li class="d-flex justify-content-center dd-mgt-3">
+              <button class="btn btn-warning" (click)="changeName(newName.value)">Cambiar</button>
+            </li>
+        </ul>
+        </label>
+        <div class="break"></div>
+    </li>
+    </ul>
+
+<!-- (TABS)-->
+  <!-- ............................................................................... -->
+  <div class="list-content dd-mgt-3">
+    <ul class="list-group dd-union-card-top">
+      <li class="list-group-item" style="border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;">
+      
+        <ul class="nav nav-tabs" role="tablist">
+          <!-- TAB AMIGOS-->
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active notSelect"
+              role="tab"
+              id="friend-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#friend"
+              aria-controls="friend"
+              >UNIRSE A PARTIDA</button>
+          </li>
+          <!-- TAB BUSCAR-->
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link notSelect"
+              role="tab"
+              id="search-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#search"
+              type="button"
+              aria-controls="search"
+              >AGREGAR AMIGO</button>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ............................................................................... -->
+  
+      
+      <!-- OPCION 1 - LISTADO DE AMIGOS .......................................... -->
+      <div class="jumbotron list-content">
+      <ul class="list-group">
+          <div class="tab-content">
+          <div
+            class="tab-pane fade show active"
+            id="friend"
+            role="tabpanel"
+            aria-labelledby="friend-tab"
+          >
+            <!-- 1. TITULO -->
+            <li href="#" class="list-group-item title">
+              Lista de amigos
+            </li>
+
+            <!-- 2. CONJUNTO DE AMIGOS -->
+            <!-- (SCROLL DE LA LISTA DE AMIGOS)-->
+            <div class="scroll-show-home dd-union-card-bottom">
+                <div class="overflow-auto">
+
+                    <ng-container *ngFor="let friend of friendList">
+                      <li class="list-group-item">
+                        <label class="dd-blue">{{friend.name}}</label>
+                        <label class="float-end">
+                            <a class="btn btn-success dd-mgt-4 btn-xs glyphicon glyphicon-trash" title="Unirse a partida" (click)="JoinFriendGame(friend.id)"><i class="bi bi-arrow-bar-right"></i></a>&nbsp;
+                            <a class="btn btn-danger dd-mgt-4 btn-xs glyphicon glyphicon-trash" title="Eliminar amigo" (click)="deleteFriend(friend.id)"><i class="bi bi-trash"></i></a>
+                        </label>
+                        <div class="break"></div>
+                      </li>
+                    </ng-container>
+
+        </div>
+      </div>
+  </div>
+
+  <!-- OPCION 2 - BUSCADOR DE AMIGOS ..........................................  -->
+  <div 
+  class="tab-pane fade"
+  id="search"
+  role="tabpanel"
+  aria-labelledby="search-tab"
+>
+  <div class="jumbotron">
+      <ul class="list-group">
+          <li class="list-group-item title" style="border-top-left-radius: 0;
+          border-top-right-radius: 0;">
+              <input id="search-input" #emailFriend type="search" id="form1" class="form-control" (keyup.enter)="sendFriendRequest(emailFriend.value); emailFriend.value = ''" placeholder="Introduza aquí el correo de su amigo."/>
+          </li>
+      </ul>
+  </div>
+</div>
+</div>
+
+<!-- ............................................................................... -->
+  
+</ul>
+</div>
+
+</div>                                                                          

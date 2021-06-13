@@ -1,0 +1,14 @@
+<div class="card dd-chat">
+    <div class="card-body">
+    <div >
+      <p class="small" *ngFor="let message of chat"><span style="color: {{message.color}};">{{message.sender}}:</span> {{message.content}}</p>
+      </div>
+          
+        </div>
+        <div class="card-footer">
+            <div class="input-group">
+                <input #msg (keyup.enter)="sendMessage(msg.value);msg.value=''" type="text" class="form-control" [attr.disabled]="(backService.team ==0 || backService.team ==backService.game.dynamicData.currentlyDrawingTeam)?true:null" placeholder="Mensaje / Palabra" aria-label="Mensaje" aria-describedby="basic-addon1" />
+                <input (click)="sendMessage(msg.value);msg.value = ''" type="button" class="btn btn-primary" value=">">
+              </div>
+          </div>
+      </div>
