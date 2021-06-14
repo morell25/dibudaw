@@ -17,8 +17,8 @@ export class AuthService {
 
 
 
-  baseUrl: string = 'https://dibudaw.herokuapp.com'; //CAMBIAR ESTO!!!!!!!!!!!!!
-  expressUrl: string = 'https://dibudaw.herokuapp.com';
+  baseUrl: string = 'https://dibudaw1.herokuapp.com'; //CAMBIAR ESTO!!!!!!!!!!!!!
+  expressUrl: string = 'https://dibudaw1.herokuapp.com';
 
 
 

@@ -15,7 +15,7 @@ export class SocialService {
   private socketUrl: string;
   private statusSubscription!: Subscription;
   constructor(private backService: DataBackService, private socketsService: SocketsService, private authService: AuthService, private dataFrontService: DataFrontService,) {
-    this.socketUrl = 'https://dibudaw-social.herokuapp.com';
+    this.socketUrl = 'https://dibudaw1-social-server.herokuapp.com';
   }
 
 

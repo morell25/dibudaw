@@ -30,7 +30,7 @@ export class SocketsService {
   private socketUrl: string;
 
   constructor(private backService: DataBackService, private router: Router, private authService: AuthService, private dataFrontService: DataFrontService) {
-    this.socketUrl = 'https://dibudaw-rooms.herokuapp.com';
+    this.socketUrl ='https://dibudaw1-game-server.herokuapp.com';
   }
 
   //WRAPPERS

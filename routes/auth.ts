@@ -55,7 +55,7 @@ function welcomeMail(pReceiver:string, pUsername:string){
   </ul>
           <br>
           <div style="width: 100%; text-align: center">
-            <a style="text-decoration: none; border-radius: 5px; padding: 11px 23px; color: white; background-color: #3498db" href="https://dibudaw.herokuapp.com">Ir a la página</a>
+            <a style="text-decoration: none; border-radius: 5px; padding: 11px 23px; color: white; background-color: #3498db" href="https://dibudaw1.herokuapp.com">Ir a la página</a>
           </div>
           <p style="color: #b3b3b3; font-size: 12px; text-align: center;margin: 30px 0 0">Dibudaw 2021</p>
         </div>
@@ -108,7 +108,7 @@ router.post('/login', async (req: express.Request, res: express.Response) => {
       var now = new Date();
       res.set('Access-Control-Allow-Credentials', 'true');
       res.cookie('session', jwtBearerToken, {
-        expires: new Date(now.getFullYear() + 1, now.getMonth(), 0), httpOnly: true
+        expires: new Date(now.getFullYear() + 1, now.getMonth(), 0), httpOnly: true, secure: true
       });
       res.json({ status: 'valid', reason: loginResult.reason });
     }
