@@ -34,7 +34,7 @@ export function app(): express.Express {
   server.use(cookieParser());
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({ extended: true }));
-  server.use(cors({ origin: true, credentials: true, exposedHeaders: ['Set-Cookie', 'set-cookie'] }));
+  server.use(cors({ origin: 'https://dibudaw1.herokuapp.com', credentials: true,  exposedHeaders: ['Set-Cookie', 'set-cookie'] }));
   
   //Routes:
   server.use('/api', routes);

@@ -108,7 +108,7 @@ router.post('/login', async (req: express.Request, res: express.Response) => {
       var now = new Date();
       res.set('Access-Control-Allow-Credentials', 'true');
       res.cookie('session', jwtBearerToken, {
-        expires: new Date(now.getFullYear() + 1, now.getMonth(), 0), httpOnly: true, secure: true, sameSite: "strict"
+        expires: new Date(now.getFullYear() + 1, now.getMonth(), 0), httpOnly: true, secure: true, sameSite: "strict", domain: 'dibudaw1.herokuapp.com'
       });
       res.json({ status: 'valid', reason: loginResult.reason });
     }
