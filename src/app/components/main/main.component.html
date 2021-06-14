@@ -1,0 +1,73 @@
+<!--(IN)-->
+<div class="row notSelectDefault">
+
+    <!-- AJUSTES Y DESPLEGABLE -->
+    <div class="col-2">
+        <div class="dropdown">
+            <a class="btn btn-dark dropdown-toggle float-start settings" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-gear-fill"></i>
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><p class="text-center text-decoration-underline">Usuario:</p></li>
+              <li><a class="dropdown-item name" [routerLink]="['/main/config/email']">Cambiar E-mail</a></li>
+              <li><a class="dropdown-item name" [routerLink]="['/main/config/password']">Cambiar Contraseña</a></li>
+              <li><a class="dropdown-item notSelect name" (click)="logout()">Cerrar sesión</a></li>
+              <br>
+              <li><p class="text-center text-decoration-underline">Sonido:</p></li>
+              <li>
+                  <div class="row">
+                      <div class="col-6 text-center">
+                          <button class="btn btn-config" title="Música de fondo" (click)="toggleMusic()"><img [attr.src]="backService.music?'assets/images/music-note.png':'assets/images/music-note-beamed.png'" alt="Nota Musical" /></button>
+                        </div>
+                        <div class="col-6 text-center">
+                    <button class="btn btn-config" title="Efectos de sonido" (click)="toggleSound()"><img [attr.src]="backService.sound?'assets/images/volume-up-fill.png':'assets/images/volume-mute-fill.png'" alt="Altavoz" /></button>
+                </div>
+            </div>
+        </li>
+        <br>
+        <li><a class="dropdown-item name" [routerLink] = "['/terms']">Términos y condiciones</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- DIBUDAW ENLACE-->
+    <div class="col-8 d-flex justify-content-center">
+        <a [routerLink]="['/home']" class="text-decoration-none"><h1 class="dibudaw dd-mgt-4">dibudaw&nbsp;<i class="bi bi-pencil white" style="font-size: 20px;"></i></h1></a>
+    </div>
+
+    <!-- CAMPANA Y DESPLEGABLE -->
+    <div class="col-2">
+        <div class="dropdown">
+            <a class="btn btn-warning dropdown-toggle float-end notifications" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-bell-fill dd-badge" style="font-size:1rem" id="{{total}}">&#x7;</i>
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <ng-container *ngFor="let friendRequestItem of friendRequests">
+                    <li class="dropdown-item notSelectDefault dd-blue-msg">{{friendRequestItem.name}} te ha enviado una solicitud de amistad:</li>
+                    <div class="text-center">
+                            <button class="btn btn-outline-success btn-sm dd-mgb-4" (click)='acceptFriendRequest(friendRequestItem.id)'>Aceptar</button>
+                            <button class="btn btn-outline-danger btn-sm dd-mgb-4" (click)='declineFriendRequest(friendRequestItem.id)' style="margin-left: 2%;">Rechazar</button>
+                    </div>
+            
+                </ng-container>
+                <ng-container *ngFor="let invitation of invitationList">
+                    <li class="dropdown-item notSelectDefault dd-blue-msg">{{invitation.name}} te ha invitado a su partida:</li>
+                        <div class="text-center">
+                            <button class="btn btn-outline-success btn-sm dd-mgb-4" (click)='joinRoom(invitation.id)'>Aceptar</button>
+                            <button class="btn btn-outline-danger btn-sm dd-mgb-4" (click)='rechazaInvitation(invitation.id)' style="margin-left: 2%;">Rechazar</button>
+                        </div>
+                    
+                     
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+<!--(OUT)-->
+<!-- COMPONENTE LISTADO DE AMIGOS Y SALA DE ESPERA -->
+<router-outlet ></router-outlet>

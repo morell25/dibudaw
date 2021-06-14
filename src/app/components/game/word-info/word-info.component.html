@@ -1,0 +1,55 @@
+
+<div class="container notSelectDefault">
+  <div class="row">
+    <!-- COL DE 3 -->
+    <!-- 1. COL VACIO -->
+    <div class="col"> 
+    </div>
+
+    
+    
+    <ng-container *ngIf="backService.game.dynamicData.currentlyDrawingTeam == backService.team">
+        <!-- 2. COL CON PALABRA -->
+        <div class="col d-flex justify-content-center">
+          <h2 style="color: white; margin-top:3%;">
+            {{backService.game.dynamicData.currentWord}}
+          </h2>
+        </div>
+        
+        <div class="col">
+          <div class="input-group" style="margin-top: 1.2rem;">
+            <a href="https://dle.rae.es/{{backService.game.dynamicData.currentWord}}" target="_blank" id="helpWord">
+              <img src="../../../../assets/images/diccionario3.png" style="width: 2.2rem;" alt="Busqueda de palabra en diccionario.">
+            </a>
+            <a href="https://www.google.es/search?q={{backService.game.dynamicData.currentWord}}&hl=es&tbm=isch" target="_blank" id="helpWord">
+              <img src="../../../../assets/images/searchImage2.png" style="width: 2.2rem;" alt="">
+            </a>
+          </div>
+        </div>
+  </ng-container>
+
+  
+  <ng-container *ngIf="backService.game.dynamicData.currentlyDrawingTeam != backService.team">
+    <!-- 2. COL CON PALABRA -->
+    <div class="col d-flex justify-content-center">
+      <h2 style="color: white; margin-top:3%;">
+      {{backService.game.dynamicData.wordStatus}}
+      </h2>
+    </div>
+
+    <div class="col">
+      <div class="input-group" style="margin-top: 1.2rem;">
+        <a href="" class="cursorNotAllowed" id="helpWord" style="pointer-events:none;">
+          <img src="../../../../assets/images/diccionarioDisabled.png" style="width: 2.2rem;" alt="Busqueda de palabra en diccionario - Deshabilidtado">
+        </a>
+      
+        <a href="" class="cursorNotAllowed" id="helpWord" style="pointer-events:none;">
+          <img src="../../../../assets/images/searchImageDisabled.png" style="width: 2.2rem;" alt="">
+        </a>
+      </div>
+    </div>
+  </ng-container>
+
+      
+    </div>
+</div>

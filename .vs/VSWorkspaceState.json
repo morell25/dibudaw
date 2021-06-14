@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src\\app",
+    "\\src\\app\\components",
+    "\\src\\app\\components\\config",
+    "\\src\\app\\components\\config\\change-password",
+    "\\src\\app\\components\\game",
+    "\\src\\app\\components\\game\\word-info",
+    "\\src\\app\\services"
+  ],
+  "SelectedNode": "\\.gitignore",
+  "PreviewInSolutionExplorer": false
+}
